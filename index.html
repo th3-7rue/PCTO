@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razor's Portfolio</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+
+</head>
+
+<body>
+    <div class='circle'></div>
+    <div id="razor" class="center container btn">
+        <h1>Razor's Portfolio</h1>
+    </div>
+    <div class="content">
+        <div class="flexContainer">
+            <div class="container">
+                <h2>Autonoleggio</h2>
+                <p>Progetto di un sito web per un autonoleggio</p>
+                <a href="autonoleggio.php">Vai al progetto <i class="material-symbols-outlined">arrow_forward</i></a>
+
+            </div>
+            <div class="container">
+                <h2>Management - Autonoleggio</h2>
+                <p>Progetto di un sito web per un autonoleggio con funzionalità di gestione</p>
+                <a href="management/">Vai al progetto <i class="material-symbols-outlined">arrow_forward</i></a>
+            </div>
+
+        </div>
+    </div>
+</body>
+<style>
+    i {
+        vertical-align: middle;
+
+    }
+
+    a {
+        color: #f6f5f7;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #f6f5f7;
+        text-decoration: underline;
+    }
+
+    .flexContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+    }
+
+
+    body {
+        background-color: #8605c2;
+        color: #f6f5f7;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+    }
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+
+    }
+
+    .container {
+        border-radius: 50px;
+        background: #8605c2;
+        box-shadow: 11px 11px 22px #7204a5,
+            -11px -11px 22px #9a06df;
+        padding: 30px;
+        white-space: nowrap;
+        user-select: none;
+    }
+
+    .btn:hover {
+        border-radius: 50px;
+        background: linear-gradient(145deg, #7905af, #8f05d0);
+        box-shadow: 11px 11px 22px #7204a5,
+            -11px -11px 22px #9a06df;
+    }
+
+    .container.clicked {
+        background: #8605c2;
+        box-shadow: inset 11px 11px 22px #7204a5,
+            inset -11px -11px 22px #9a06df;
+        top: 100px;
+    }
+
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background: #8605c2;
+        box-shadow: inset 3px 3px 6px #7204a5,
+            inset -3px -3px 6px #9a06df;
+        z-index: 999;
+    }
+
+    #razor {
+        transition: all 0.5s ease;
+    }
+
+    .content {
+        transition: all 0.5s ease;
+        top: 100vh;
+    }
+</style>
+<script>
+    $(".content").hide();
+    console.log("Hello World");
+    // track cursor coordinates
+    var x = 0;
+    var y = 0;
+    // track cursor coordinates
+    $(document).mousemove(function (event) {
+        x = event.pageX;
+        y = event.pageY;
+        //console.log(x + " " + y);
+        // move the ball to the cursor
+        $(".circle").css("left", x + "px");
+        $(".circle").css("top", y + "px");
+
+    });
+    $(".container").hover(function () {
+        $(".circle").css("opacity", "0.5");
+    });
+    $(".container").mouseleave(function () {
+        $(".circle").css("opacity", "1");
+    });
+
+    $("#razor").click(function () {
+        // if has class clicked
+        if ($("#razor").hasClass("clicked")) {
+            // remove class clicked
+            $("#razor").removeClass("clicked");
+            $(".content").hide();
+        }
+        else {
+            // add class clicked
+            $("#razor").addClass("clicked");
+            $(".content").show();
+        }
+    });
+</script>
+
+</html>
